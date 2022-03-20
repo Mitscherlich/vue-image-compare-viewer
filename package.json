@@ -11,23 +11,29 @@
     "composition-api"
   ],
   "files": [
-    "dist"
+    "dist",
+    "lib",
+    "types"
   ],
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/index.js",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
       "types": "./types/index.d.ts"
     }
   },
   "scripts": {
-    "build": "tsc",
-    "test": "vitest run",
-    "prepublishOnly": "pnpm run build",
+    "tsc": "tsc",
+    "build": "tsup ./lib/index.js --format cjs,esm",
+    "prepublishOnly": "npm-run-all tsc build",
     "example:dev": "vite example/ -c vite.config.js",
     "example:build": "vite build example/ -c vite.config.js"
+  },
+  "peerDependencies": {
+    "vue": "^2.6 || ^3.2"
   },
   "dependencies": {
     "image-compare-viewer": "^1.5.0",
@@ -45,11 +51,17 @@
     "markdown-it-anchor": "^8.4.1",
     "markdown-it-prism": "^2.2.3",
     "prismjs": "^1.27.0",
+    "tsup": "^5.12.1",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
     "vite-plugin-dts": "^0.9.10",
     "vite-plugin-md": "^0.11.9",
     "vitest": "^0.7.6",
     "vue": "^3.2.31"
+  },
+  "tsup": {
+    "clean": true,
+    "jsxFactory": "h",
+    "jsxFragment": "Fragment"
   }
 }

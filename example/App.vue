@@ -1,5 +1,5 @@
 <script setup>
-import README from './README.md'
+import README from '../README.md'
 </script>
 
 <template>
@@ -10,16 +10,9 @@ import README from './README.md'
   </main>
 </template>
 
+<style src="./style.css"></style>
+
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-main {
-  padding: 40px;
-}
-
 .container {
   display: flex;
   justify-content: center;

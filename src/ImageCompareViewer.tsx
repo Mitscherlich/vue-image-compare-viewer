@@ -1,4 +1,5 @@
-import { defineComponent, toRefs } from 'vue'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Fragment, defineComponent, h, toRefs } from 'vue'
 import PropTypes from 'vue-types'
 import omit from 'lodash/omit'
 import type { ImageCompareOptions } from 'image-compare-viewer'
